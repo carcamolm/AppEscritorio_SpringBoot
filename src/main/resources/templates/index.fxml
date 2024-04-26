@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clientes.controlador.IndexControlador">
+   <children>
+      <Label layoutX="100.0" layoutY="38.0" prefHeight="54.0" prefWidth="385.0" text="SISTEMA DE CLIENTES" textFill="#eb0d0d">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font></Label>
+      <TableView fx:id="clienteTabla" layoutX="107.0" layoutY="95.0" prefHeight="197.0" prefWidth="372.0">
+        <columns>
+          <TableColumn fx:id="idClienteColumna" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="nombreClienteColumna" prefWidth="75.0" text="NOMBRE" />
+            <TableColumn fx:id="domicilioClienteColumna" prefWidth="75.0" text="DOMICILIO" />
+            <TableColumn fx:id="telefonoClienteColumna" prefWidth="75.0" text="TELEFONO" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
