@@ -38,6 +38,19 @@ public class IndexControlador implements Initializable {
 
     private final ObservableList<Cliente> clienteList =
             FXCollections.observableArrayList();
+
+//Parte 2
+    
+    @FXML
+    private TextField txtNombre;
+    @FXML
+    private TextField txtDomicilio;
+
+    @FXML
+    private TextField txtTelefono;
+
+//-----------
+    
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         clienteTabla.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
@@ -57,4 +70,43 @@ public class IndexControlador implements Initializable {
         clienteList.addAll(clienteServicio.ListarClientes());
         clienteTabla.setItems(clienteList);
     }
+
+    //Parte 2
+
+     public void agregarCliente(){
+        if(txtNombre.getText().isEmpty()){
+            mostrarMensaje("Error de Validación","Debe proporcionar nombre Cliente");
+            txtNombre.requestFocus();
+            return;
+        }
+        else{
+            var cliente = new  Cliente();
+            recolectarDatosFormulario(cliente);
+            clienteServicio.guardarCliente(cliente);
+            mostrarMensaje("Información", "Cliente Agregado");
+            limpiarFormulario();
+            listarClientes();
+
+        }
+    }
+   private void recolectarDatosFormulario(Cliente cliente){
+        cliente.setNombreCliente(txtNombre.getText());
+        cliente.setDomicilioCliente(txtDomicilio.getText());
+        cliente.setTelefonoCliente(txtTelefono.getText());
+   }
+   private void limpiarFormulario(){
+        txtNombre.clear();
+        txtDomicilio.clear();
+        txtTelefono.clear();
+   }
+
+    private void mostrarMensaje(String titulo, String mensaje){
+        Alert alerta=new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle(titulo);
+        alerta.setHeaderText(null);
+        alerta.setContentText(mensaje);
+        alerta.showAndWait();
+    }
+
+    
 }
