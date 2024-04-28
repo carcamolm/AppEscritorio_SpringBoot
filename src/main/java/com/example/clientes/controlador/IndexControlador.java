@@ -82,6 +82,9 @@ public class IndexControlador implements Initializable {
         else{
             var cliente = new  Cliente();
             recolectarDatosFormulario(cliente);
+            //-----Parte2
+            cliente.setIdCliente(null);
+            //----------------------Pasar a terminar el metodo modificarCliente
             clienteServicio.guardarCliente(cliente);
             mostrarMensaje("Información", "Cliente Agregado");
             limpiarFormulario();
@@ -90,11 +93,46 @@ public class IndexControlador implements Initializable {
         }
     }
    private void recolectarDatosFormulario(Cliente cliente){
+       //-----Parte 2----
+       if(idClienteInterno!=null)
+             cliente.setIdCliente(idClienteInterno);
+       //------------------------------------Pase a modificar agregarCliente
+       
         cliente.setNombreCliente(txtNombre.getText());
         cliente.setDomicilioCliente(txtDomicilio.getText());
         cliente.setTelefonoCliente(txtTelefono.getText());
    }
+//------Parte 2---
+public void  modificarCliente(){
+        if(idClienteInterno==null){
+            mostrarMensaje("Información","Debe seleccionar un registro Cliente");
+            return;
+        }
+        if(txtNombre.getText().isEmpty()){
+            mostrarMensaje("Error Validación","Debe ingresar un Cliente");
+            txtNombre.requestFocus();
+            return;
+        }
+        var cliente=new Cliente();
+        recolectarDatosFormulario(cliente);  //Modificar recolectarDatosFormulario
+
+        //---Parte 2
+        clienteServicio.guardarCliente(cliente);
+        mostrarMensaje("Información","Cliente Modificado");
+        limpiarFormulario();
+        listarClientes();
+    //----------Pasar a limpiarFormulario establecer como nulo el idClienteInterno
+  }
+
+//--------------------------
+
+
+    
    private void limpiarFormulario(){
+       //---Parte 2
+       idClienteInterno=null;
+       //-----------
+       
         txtNombre.clear();
         txtDomicilio.clear();
         txtTelefono.clear();
