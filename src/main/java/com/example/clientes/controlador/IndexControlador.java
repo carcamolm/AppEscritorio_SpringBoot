@@ -52,7 +52,7 @@ public class IndexControlador implements Initializable {
         telefonoClienteColumna.setCellValueFactory(new PropertyValueFactory<>("telefonoCliente"));
     }
     private void listarClientes(){
-        logger.info("Ejecutando listado de tareas");
+        logger.info("Ejecutando listado de clientes");
         clienteList.clear();
         clienteList.addAll(clienteServicio.ListarClientes());
         clienteTabla.setItems(clienteList);
