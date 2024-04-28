@@ -92,6 +92,18 @@ public class IndexControlador implements Initializable {
 
         }
     }
+
+//Parte 2----
+    public void cargarClienteFormulario(){
+        var cliente = clienteTabla.getSelectionModel().getSelectedItem();
+        if (cliente != null){
+            idClienteInterno=cliente.getIdCliente();
+            txtNombre.setText(cliente.getNombreCliente());
+            txtDomicilio.setText(cliente.getDomicilioCliente());
+            txtTelefono.setText(cliente.getTelefonoCliente());
+        }
+    }
+    //-------
    private void recolectarDatosFormulario(Cliente cliente){
        //-----Parte 2----
        if(idClienteInterno!=null)
